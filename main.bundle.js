@@ -881,7 +881,7 @@ var ProductViewComponent = (function () {
         this.registerService = registerService;
         this.messagesent = true;
     }
-    ProductViewComponent.prototype.ngDoCheck = function () {
+    ProductViewComponent.prototype.ngOnInit = function () {
         this.loginToken = this.registerService.getToken();
         this.postId = this.productService.getPostId();
         this.productService.getspecificproduct(this.loginToken, this.postId);
@@ -889,9 +889,22 @@ var ProductViewComponent = (function () {
         //console.log("in product view",this.productToView ); 
         this.postDate = new Date(this.productToView.createdDate).toLocaleDateString('en-GB');
         //console.log('date',this.postDate);
-        this.productToView.createdDate = this.postDate;
-        console.log('product id is ', this.productToView.id);
+        if (this.postDate != null || this.postDate !== null || this.postDate != "Invalid Date")
+            this.productToView.createdDate = this.postDate;
+        console.log('product id is do check ', this.productToView.id, this.postDate);
     };
+    // ngDoCheck(){
+    //    this.loginToken=this.registerService.getToken();
+    //    this.postId=this.productService.getPostId();
+    //   this.productService.getspecificproduct(this.loginToken,this.postId);
+    //   this.productToView=this.productService.getProduct();
+    //   //console.log("in product view",this.productToView ); 
+    //   this.postDate=new Date(this.productToView.createdDate).toLocaleDateString('en-GB');
+    //   //console.log('date',this.postDate);
+    //   if(this.postDate!=null || this.postDate!==null || this.postDate!="Invalid Date" )
+    //   this.productToView.createdDate=this.postDate;
+    //   console.log('product id is do check ',this.productToView.id,this.postDate);
+    // }
     ProductViewComponent.prototype.sendMessage = function (message) {
         var _this = this;
         this.messageToken = this.registerService.getToken();

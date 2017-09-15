@@ -716,18 +716,18 @@ var NavigationComponent = (function () {
         this.loginToken = "";
         this.childData = null;
         this.logoutToken = null;
-        this.showLogout = false;
+        this.showLogout = true;
         this.showLogout = true;
         console.log("Inside contruct");
         this.loginToken = localStorage.getItem("auth-token");
         console.log("login token", this.loginToken);
         if (this.loginToken === "") {
             this.showLogout = true;
-            console.log("showlogout", this.showLogout, this.loginToken);
+            console.log("showlogout in construct", this.showLogout, this.loginToken);
         }
         else {
             this.showLogout = false;
-            console.log("showlogout", this.showLogout, this.loginToken);
+            console.log("showlogout in construct", this.showLogout, this.loginToken);
         }
     }
     // ngDoCheck(){
@@ -749,11 +749,11 @@ var NavigationComponent = (function () {
         console.log("login token", this.loginToken);
         if (this.loginToken === "") {
             this.showLogout = true;
-            console.log("showlogout", this.showLogout, this.loginToken);
+            console.log("showlogout in init", this.showLogout, this.loginToken);
         }
         else {
             this.showLogout = false;
-            console.log("showlogout", this.showLogout, this.loginToken);
+            console.log("showlogout in init", this.showLogout, this.loginToken);
         }
     };
     NavigationComponent.prototype.logoutUser = function () {
@@ -766,11 +766,11 @@ var NavigationComponent = (function () {
             console.log("login token", _this.loginToken);
             if (_this.loginToken === "") {
                 _this.showLogout = true;
-                console.log("showlogout", _this.showLogout, _this.loginToken);
+                console.log("showlogout in logout", _this.showLogout, _this.loginToken);
             }
             else {
                 _this.showLogout = false;
-                console.log("showlogout", _this.showLogout, _this.loginToken);
+                console.log("showlogout in logout", _this.showLogout, _this.loginToken);
             }
             _this.registerService.sendToken("", "");
             _this.router.navigate(['']);

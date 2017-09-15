@@ -1075,7 +1075,7 @@ var RegisterService = (function () {
         //return this.username;
     };
     RegisterService.prototype.logoutUser = function (loginToken) {
-        localStorage.setItem("auth-token", "none");
+        localStorage.setItem("auth-token", loginToken);
         localStorage.setItem("userId", "");
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
         headers.append('auth-token', localStorage.getItem("auth-token"));

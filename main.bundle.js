@@ -717,7 +717,7 @@ var NavigationComponent = (function () {
         this.childData = null;
         this.logoutToken = null;
         this.showLogout = false;
-        this.showLogout = false;
+        this.showLogout = true;
         console.log("Inside contruct");
         this.loginToken = localStorage.getItem("auth-token");
         console.log("login token", this.loginToken);
@@ -744,7 +744,7 @@ var NavigationComponent = (function () {
     //    console.log('In Nav ',this.loginToken);      
     // }
     NavigationComponent.prototype.ngOnInit = function () {
-        this.showLogout = false;
+        this.showLogout = true;
         this.loginToken = localStorage.getItem("auth-token");
         console.log("login token", this.loginToken);
         if (this.loginToken === "") {

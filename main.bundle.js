@@ -713,15 +713,16 @@ var NavigationComponent = (function () {
     function NavigationComponent(registerService, router) {
         this.registerService = registerService;
         this.router = router;
-        this.loginToken = "";
+        this.loginToken = "none";
         this.childData = null;
         this.logoutToken = null;
         this.showLogout = true;
         this.showLogout = true;
         console.log("Inside contruct");
         this.loginToken = localStorage.getItem("auth-token");
+        this.loginToken = "none";
         console.log("login token", this.loginToken);
-        if (this.loginToken === "") {
+        if (this.loginToken == "none" || this.loginToken == null || this.loginToken === null) {
             this.showLogout = true;
             console.log("showlogout in construct", this.showLogout, this.loginToken);
         }
@@ -747,7 +748,7 @@ var NavigationComponent = (function () {
         this.showLogout = true;
         this.loginToken = localStorage.getItem("auth-token");
         console.log("login token", this.loginToken);
-        if (this.loginToken === "") {
+        if (this.loginToken == "none" || this.loginToken == null || this.loginToken === null) {
             this.showLogout = true;
             console.log("showlogout in init", this.showLogout, this.loginToken);
         }
@@ -764,7 +765,7 @@ var NavigationComponent = (function () {
         this.registerService.logoutUser(this.logoutToken).subscribe(function (response) {
             _this.loginToken = localStorage.getItem("auth-token");
             console.log("login token", _this.loginToken);
-            if (_this.loginToken === "") {
+            if (_this.loginToken == "none") {
                 _this.showLogout = true;
                 console.log("showlogout in logout", _this.showLogout, _this.loginToken);
             }
@@ -772,12 +773,12 @@ var NavigationComponent = (function () {
                 _this.showLogout = false;
                 console.log("showlogout in logout", _this.showLogout, _this.loginToken);
             }
-            _this.registerService.sendToken("", "");
+            _this.registerService.sendToken("none", "");
             _this.router.navigate(['']);
         }, function (error) {
         });
-        this.loginToken = "";
-        this.registerService.sendToken("", "");
+        this.loginToken = "none";
+        this.registerService.sendToken("none", "");
         this.router.navigate(['']);
     };
     NavigationComponent = __decorate([
@@ -1014,8 +1015,8 @@ var RegisterService = (function () {
         this._http = _http;
     }
     RegisterService.prototype.ngOnInit = function () {
-        localStorage.setItem("auth-token", "");
-        localStorage.setItem("userId", "");
+        localStorage.setItem("auth-token", "none");
+        localStorage.setItem("userId", "none");
         console.log("Register init service", localStorage.getItem("auth-token"));
     };
     RegisterService.prototype.sendUserData = function (userData) {
@@ -1061,7 +1062,7 @@ var RegisterService = (function () {
         //return this.username;
     };
     RegisterService.prototype.logoutUser = function (loginToken) {
-        localStorage.setItem("auth-token", "");
+        localStorage.setItem("auth-token", "none");
         localStorage.setItem("userId", "");
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
         headers.append('auth-token', localStorage.getItem("auth-token"));

@@ -1034,16 +1034,16 @@ var RegisterService = (function () {
     };
     RegisterService.prototype.sendUserData = function (userData) {
         var userdataRegister = {
-            "userName": userData.username,
-            "firstName": userData.firstname,
-            "lastName": userData.lastname,
+            "userName": userData.userName,
+            "firstName": userData.firstName,
+            "lastName": userData.lastName,
             "password": userData.password,
             "email": userData.email,
             "phone": userData.phone
         };
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: this.headers });
-        return this._http.post('https://testwant.herokuapp.com/register', userdataRegister, this.options)
+        return this._http.post('https://testwant.herokuapp.com/register', JSON.stringify(userdataRegister), this.options)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
